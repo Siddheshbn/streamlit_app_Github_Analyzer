@@ -278,11 +278,12 @@ def check_adls_data_exists(container_name, directory_path, tenant_id, client_id,
 
 
 from databricks import sql
-DATABRICKS_INSTANCE = os.getenv("DATABRICKS_HOST")
-DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
+
 
 def read_data_from_adls(date, table, extra_conditions="", date_col='event_date', schema='gold'):
 
+    DATABRICKS_INSTANCE = os.getenv("DATABRICKS_HOST")
+    DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
     conn = sql.connect(
         server_hostname = DATABRICKS_INSTANCE,
         http_path = "/sql/1.0/warehouses/bb5b1b677264e4bd",
