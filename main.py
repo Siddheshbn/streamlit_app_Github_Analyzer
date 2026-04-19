@@ -15,13 +15,13 @@ load_dotenv()
 # ---------------- CONFIG ----------------
 import streamlit as st
 st.write(dict(st.secrets))
-# DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
-# DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
-# JOB_ID=st.secrets["JOB_ID"]
-# AZURE_TENANT_ID = st.secrets["tenant_id"]
-# AZURE_CLIENT_ID = st.secrets["client_id"]
-# AZURE_CLIENT_SECRET = st.secrets["client_secret"]
-# AZURE_SUBSCRIPTION_ID = st.secrets["subscription_id"]
+DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
+DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
+JOB_ID=st.secrets["JOB_ID"]
+AZURE_TENANT_ID = st.secrets["tenant_id"]
+AZURE_CLIENT_ID = st.secrets["client_id"]
+AZURE_CLIENT_SECRET = st.secrets["client_secret"]
+AZURE_SUBSCRIPTION_ID = st.secrets["subscription_id"]
 
 RESOURCE_GROUP = "RG-SpotifyAzureProject"
 FACTORY_NAME = "adfspotifyazureprj"
