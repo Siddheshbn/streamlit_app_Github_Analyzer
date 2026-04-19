@@ -13,13 +13,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ---------------- CONFIG ----------------
-DATABRICKS_INSTANCE = os.getenv("DATABRICKS_HOST")
-DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
-JOB_ID=os.getenv("JOB_ID")
-AZURE_TENANT_ID = os.getenv("tenant_id")
-AZURE_CLIENT_ID = os.getenv("client_id")
-AZURE_CLIENT_SECRET = os.getenv("client_secret")
-AZURE_SUBSCRIPTION_ID = os.getenv("subscription_id")
+DATABRICKS_INSTANCE = st.secrets("DATABRICKS_HOST")
+DATABRICKS_TOKEN = st.secrets("DATABRICKS_TOKEN")
+JOB_ID=st.secrets("JOB_ID")
+AZURE_TENANT_ID = st.secrets("tenant_id")
+AZURE_CLIENT_ID = st.secrets("client_id")
+AZURE_CLIENT_SECRET = st.secrets("client_secret")
+AZURE_SUBSCRIPTION_ID = st.secrets("subscription_id")
 
 RESOURCE_GROUP = "RG-SpotifyAzureProject"
 FACTORY_NAME = "adfspotifyazureprj"
