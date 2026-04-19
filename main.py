@@ -13,8 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ---------------- CONFIG ----------------
-import streamlit as st
-st.write(dict(st.secrets))
+
 DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
 DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
 JOB_ID=st.secrets["JOB_ID"]
@@ -73,6 +72,7 @@ if st.button("Analyze"):
     if exists:
         st.success(f"Data exists in ADLS for {date} : {exists}. Skipping the Pipelines")
         loading_placeholder = st.empty()
+        loading_placeholder.warning("Kindly Wait!!! Loading you data....")
     else :
 
         # ---------------- s Testing start ----------------
