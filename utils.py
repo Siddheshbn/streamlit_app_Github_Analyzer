@@ -10,7 +10,10 @@ REPO_OWNER = "Siddheshbn"
 REPO_NAME = "trying_to_write_db_to_github"
 BRANCH = "main"
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
-
+AZURE_TENANT_ID = os.getenv("tenant_id")
+AZURE_CLIENT_ID = os.getenv("client_id")
+AZURE_CLIENT_SECRET = os.getenv("client_secret")
+    
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}"
 }
