@@ -285,13 +285,9 @@ from databricks import sql
 
 
 def read_data_from_adls(date, table, extra_conditions="", date_col='event_date', schema='gold'):
-
-    st.write("line 289")
     DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
     DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
-    st.write(DATABRICKS_INSTANCE)
-    
-
+  
     conn = sql.connect(
         server_hostname = st.secrets["DATABRICKS_HOST"],
         http_path = "/sql/1.0/warehouses/bb5b1b677264e4bd",
