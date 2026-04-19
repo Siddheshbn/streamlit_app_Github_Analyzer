@@ -9,7 +9,7 @@ GITHUB_API = "https://api.github.com"
 REPO_OWNER = "Siddheshbn"
 REPO_NAME = "trying_to_write_db_to_github"
 BRANCH = "main"
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}"
