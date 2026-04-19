@@ -10,10 +10,7 @@ REPO_OWNER = "Siddheshbn"
 REPO_NAME = "trying_to_write_db_to_github"
 BRANCH = "main"
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
-AZURE_TENANT_ID = os.getenv("tenant_id")
-AZURE_CLIENT_ID = os.getenv("client_id")
-AZURE_CLIENT_SECRET = os.getenv("client_secret")
-    
+
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}"
 }
@@ -84,6 +81,15 @@ def get_databricks_run_id(
         pipeline_run_id,
         access_token
     ):
+
+    AZURE_TENANT_ID = os.getenv("tenant_id")
+    AZURE_CLIENT_ID = os.getenv("client_id")
+    AZURE_CLIENT_SECRET = os.getenv("client_secret")
+    AZURE_SUBSCRIPTION_ID = os.getenv("subscription_id")
+
+    RESOURCE_GROUP = "RG-SpotifyAzureProject"
+    FACTORY_NAME = "adfspotifyazureprj"
+    PIPELINE_NAME = "github_analyzer_daily_pipeline"
 
     url = f"https://management.azure.com/subscriptions/{AZURE_SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/microsoft.DataFactory/factories/{FACTORY_NAME}/pipelineruns/{pipeline_run_id}/queryActivityruns?api-version=2018-06-01"
 
@@ -246,7 +252,7 @@ def poll_databricks_pipeline_status(DATABRICKS_INSTANCE, DB_HEADERS, db_run_id):
 from azure.identity import ClientSecretCredential
 from azure.storage.filedatalake import DataLakeServiceClient
 
-
+account_name = "datalakespotifyazureprj"
 
 # TODO : You needed to assign the role to the app or service principal in order to access the data in the storage account [INTERVIEW]
 # Assigned following two roles from Access Control (IAM) in datalake storage account :
@@ -255,17 +261,13 @@ from azure.storage.filedatalake import DataLakeServiceClient
 
 def check_adls_data_exists(container_name, directory_path, tenant_id, client_id, client_secret):
 
-    account_name = "datalakespotifyazureprj"
-    AZURE_TENANT_ID = os.getenv("tenant_id")
-    AZURE_CLIENT_ID = os.getenv("client_id")
-    AZURE_CLIENT_SECRET = os.getenv("client_secret")
-    
     credential = ClientSecretCredential(
         tenant_id,
         client_id,
         client_secret
     )
 
+    account_name = "datalakespotifyazureprj"
 
     service_client = DataLakeServiceClient(
         account_url=f"https://{account_name}.dfs.core.windows.net",
@@ -276,7 +278,6 @@ def check_adls_data_exists(container_name, directory_path, tenant_id, client_id,
     directory_client = file_system_client.get_directory_client(directory_path)
 
 
-    # def folder_has_data(directory_client):
     try:
         paths = directory_client.get_paths(max_results=1)
         return any(True for _ in paths)
@@ -292,6 +293,7 @@ def read_data_from_adls(date, table, extra_conditions="", date_col='event_date',
 
     DATABRICKS_INSTANCE = os.getenv("DATABRICKS_HOST")
     DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
+
     conn = sql.connect(
         server_hostname = DATABRICKS_INSTANCE,
         http_path = "/sql/1.0/warehouses/bb5b1b677264e4bd",
