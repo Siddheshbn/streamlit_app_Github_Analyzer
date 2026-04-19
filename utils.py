@@ -243,7 +243,7 @@ def poll_databricks_pipeline_status(DATABRICKS_INSTANCE, DB_HEADERS, db_run_id):
 from azure.identity import ClientSecretCredential
 from azure.storage.filedatalake import DataLakeServiceClient
 
-account_name = "datalakespotifyazureprj"
+
 
 # TODO : You needed to assign the role to the app or service principal in order to access the data in the storage account [INTERVIEW]
 # Assigned following two roles from Access Control (IAM) in datalake storage account :
@@ -252,6 +252,11 @@ account_name = "datalakespotifyazureprj"
 
 def check_adls_data_exists(container_name, directory_path, tenant_id, client_id, client_secret):
 
+    account_name = "datalakespotifyazureprj"
+    AZURE_TENANT_ID = os.getenv("tenant_id")
+    AZURE_CLIENT_ID = os.getenv("client_id")
+    AZURE_CLIENT_SECRET = os.getenv("client_secret")
+    
     credential = ClientSecretCredential(
         tenant_id,
         client_id,
