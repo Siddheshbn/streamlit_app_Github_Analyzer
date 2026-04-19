@@ -290,9 +290,9 @@ def read_data_from_adls(date, table, extra_conditions="", date_col='event_date',
     DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
 
     conn = sql.connect(
-        server_hostname = DATABRICKS_INSTANCE,
+        server_hostname = st.secrets["DATABRICKS_HOST"],
         http_path = "/sql/1.0/warehouses/bb5b1b677264e4bd",
-        access_token = DATABRICKS_TOKEN
+        access_token = st.secrets["DATABRICKS_TOKEN"]
     )
 
     query = f"""
