@@ -62,10 +62,10 @@ from datetime import  timedelta, timezone
 import datetime
 
 
-AZURE_TENANT_ID = st.secrets["tenant_id"]
-AZURE_CLIENT_ID = st.secrets["client_id"]
-AZURE_CLIENT_SECRET = st.secrets["client_secret"]
-AZURE_SUBSCRIPTION_ID = st.secrets["subscription_id"]
+AZURE_TENANT_ID = ["tenant_id"]
+AZURE_CLIENT_ID = ["client_id"]
+AZURE_CLIENT_SECRET = ["client_secret"]
+AZURE_SUBSCRIPTION_ID = ["subscription_id"]
 
 RESOURCE_GROUP = "RG-SpotifyAzureProject"
 FACTORY_NAME = "adfspotifyazureprj"
@@ -77,10 +77,10 @@ def get_databricks_run_id(
         access_token
     ):
 
-    AZURE_TENANT_ID = st.secrets["tenant_id"]
-    AZURE_CLIENT_ID = st.secrets["client_id"]
-    AZURE_CLIENT_SECRET = st.secrets["client_secret"]
-    AZURE_SUBSCRIPTION_ID = st.secrets["subscription_id"]
+    AZURE_TENANT_ID = ["tenant_id"]
+    AZURE_CLIENT_ID = ["client_id"]
+    AZURE_CLIENT_SECRET = ["client_secret"]
+    AZURE_SUBSCRIPTION_ID = ["subscription_id"]
 
     RESOURCE_GROUP = "RG-SpotifyAzureProject"
     FACTORY_NAME = "adfspotifyazureprj"
@@ -286,8 +286,8 @@ from databricks import sql
 
 def read_data_from_adls(date, table, extra_conditions="", date_col='event_date', schema='gold'):
 
-    DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
-    DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
+    DATABRICKS_INSTANCE = ["DATABRICKS_HOST"]
+    DATABRICKS_TOKEN = ["DATABRICKS_TOKEN"]
 
     conn = sql.connect(
         server_hostname = DATABRICKS_INSTANCE,
