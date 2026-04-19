@@ -9,11 +9,6 @@ GITHUB_API = "https://api.github.com"
 REPO_OWNER = "Siddheshbn"
 REPO_NAME = "trying_to_write_db_to_github"
 BRANCH = "main"
-GITHUB_TOKEN = st.secrets('GITHUB_TOKEN')
-
-headers = {
-    "Authorization": f"token {GITHUB_TOKEN}"
-}
 
 # -------------------------
 # UTILITY Functions
@@ -67,10 +62,10 @@ from datetime import  timedelta, timezone
 import datetime
 
 
-AZURE_TENANT_ID = st.secrets("tenant_id")
-AZURE_CLIENT_ID = st.secrets("client_id")
-AZURE_CLIENT_SECRET = st.secrets("client_secret")
-AZURE_SUBSCRIPTION_ID = st.secrets("subscription_id")
+AZURE_TENANT_ID = st.secrets["tenant_id"]
+AZURE_CLIENT_ID = st.secrets["client_id"]
+AZURE_CLIENT_SECRET = st.secrets["client_secret"]
+AZURE_SUBSCRIPTION_ID = st.secrets["subscription_id"]
 
 RESOURCE_GROUP = "RG-SpotifyAzureProject"
 FACTORY_NAME = "adfspotifyazureprj"
@@ -82,10 +77,10 @@ def get_databricks_run_id(
         access_token
     ):
 
-    AZURE_TENANT_ID = st.secrets("tenant_id")
-    AZURE_CLIENT_ID = st.secrets("client_id")
-    AZURE_CLIENT_SECRET = st.secrets("client_secret")
-    AZURE_SUBSCRIPTION_ID = st.secrets("subscription_id")
+    AZURE_TENANT_ID = st.secrets["tenant_id"]
+    AZURE_CLIENT_ID = st.secrets["client_id"]
+    AZURE_CLIENT_SECRET = st.secrets["client_secret"]
+    AZURE_SUBSCRIPTION_ID = st.secrets["subscription_id"]
 
     RESOURCE_GROUP = "RG-SpotifyAzureProject"
     FACTORY_NAME = "adfspotifyazureprj"
@@ -291,8 +286,8 @@ from databricks import sql
 
 def read_data_from_adls(date, table, extra_conditions="", date_col='event_date', schema='gold'):
 
-    DATABRICKS_INSTANCE = st.secrets("DATABRICKS_HOST")
-    DATABRICKS_TOKEN = st.secrets("DATABRICKS_TOKEN")
+    DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
+    DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
 
     conn = sql.connect(
         server_hostname = DATABRICKS_INSTANCE,
@@ -343,24 +338,6 @@ def extract_data_from_adls_for_query(query):
 
 
 
-
-
-# NOT-IN-USE
-def check_data_exists(date):
-    url = f"{GITHUB_API}/repos/{REPO_OWNER}/{REPO_NAME}/contents/data/{date}?ref={BRANCH}"
-    
-    # headers = {
-    #     "Authorization": f"token {GITHUB_TOKEN}"
-    # }
-    
-    response = requests.get(url, headers=headers)
-    
-    if response.status_code == 200:
-        return True   # folder exists
-    elif response.status_code == 404:
-        return False  # folder not found
-    else:
-        raise Exception(f"GitHub API error: {response.text}")
 
 
 # NOT-IN-USE
