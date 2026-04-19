@@ -301,30 +301,6 @@ if st.button("Analyze"):
 #     # ---------------- s Testing end ----------------
 
 
-#         # TODO : Build a input numeric field where you will pass no_of_top_repos to show in the line chart
-
-#         # TODO : In DataBricks calculate Top 3 Public Repos, Private Repos
-
-#         # TODO : Maybe you're picking the names of orgs as well while calculating top users, so do set org=Null while calculating top users
-
-#         # TODO : Read all the [Read] or [Do Read] marked chats in the ChatGPT to prepare for interview 
-
-#         # TODO : Include this point in Resume : (cache-first approach) because before triggering the databricks job, we are first checking if the data already exists in GitHub or not 
-
-#         # TODO : While writing data to Volumes in Databricks, do write it using pandas dataframe, so first convert spark dataframe to pandas dataframe and then write it to volume. Pandas DF is much faster than Spark DF for small data.
-
-#         # TODO : While discussing/researching about your architecture with chatGPT do discuss this point as well that how can we break our transformations or data into medallion architecture, and should we call the data finally which we're storing on the GitHub as "Gold Layer" , and if yes then what can be the "Silver Layer" and "Bronze Layer" in our case.
-
-#         # TODO : Also include a functionality here at the top which will check if the date inputed is valid or whether the data for that date is available or not
-
-#         # TODO : Try to save the API tokens in Azure key Vault
-
-#         # TODO : Include ELT word in your resume.
-
-#         # TODO : Your current pipeline have a caching/skip logic on the frontend side, but do include idempotency as well and include that point as well in the project README.
-
-
-
 else:
     st.warning("Provide the Date and click Analyze")
     # st.warning("No data loaded")
