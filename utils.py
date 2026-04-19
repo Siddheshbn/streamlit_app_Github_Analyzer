@@ -222,7 +222,7 @@ def poll_databricks_pipeline_status(DATABRICKS_INSTANCE, DB_HEADERS, db_run_id):
         status_placeholder = st.empty()
         while True:
             status_response = requests.get(
-                f"{DATABRICKS_INSTANCE}/api/2.1/jobs/runs/get",
+                f"https://{DATABRICKS_INSTANCE}/api/2.1/jobs/runs/get",
                 headers=DB_HEADERS,
                 params={"run_id": db_run_id}
             )
