@@ -9,7 +9,7 @@ GITHUB_API = "https://api.github.com"
 REPO_OWNER = "Siddheshbn"
 REPO_NAME = "trying_to_write_db_to_github"
 BRANCH = "main"
-GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+GITHUB_TOKEN = st.secrets('GITHUB_TOKEN')
 
 headers = {
     "Authorization": f"token {GITHUB_TOKEN}"
@@ -67,10 +67,10 @@ from datetime import  timedelta, timezone
 import datetime
 
 
-AZURE_TENANT_ID = os.getenv("tenant_id")
-AZURE_CLIENT_ID = os.getenv("client_id")
-AZURE_CLIENT_SECRET = os.getenv("client_secret")
-AZURE_SUBSCRIPTION_ID = os.getenv("subscription_id")
+AZURE_TENANT_ID = st.secrets("tenant_id")
+AZURE_CLIENT_ID = st.secrets("client_id")
+AZURE_CLIENT_SECRET = st.secrets("client_secret")
+AZURE_SUBSCRIPTION_ID = st.secrets("subscription_id")
 
 RESOURCE_GROUP = "RG-SpotifyAzureProject"
 FACTORY_NAME = "adfspotifyazureprj"
@@ -82,10 +82,10 @@ def get_databricks_run_id(
         access_token
     ):
 
-    AZURE_TENANT_ID = os.getenv("tenant_id")
-    AZURE_CLIENT_ID = os.getenv("client_id")
-    AZURE_CLIENT_SECRET = os.getenv("client_secret")
-    AZURE_SUBSCRIPTION_ID = os.getenv("subscription_id")
+    AZURE_TENANT_ID = st.secrets("tenant_id")
+    AZURE_CLIENT_ID = st.secrets("client_id")
+    AZURE_CLIENT_SECRET = st.secrets("client_secret")
+    AZURE_SUBSCRIPTION_ID = st.secrets("subscription_id")
 
     RESOURCE_GROUP = "RG-SpotifyAzureProject"
     FACTORY_NAME = "adfspotifyazureprj"
@@ -291,8 +291,8 @@ from databricks import sql
 
 def read_data_from_adls(date, table, extra_conditions="", date_col='event_date', schema='gold'):
 
-    DATABRICKS_INSTANCE = os.getenv("DATABRICKS_HOST")
-    DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
+    DATABRICKS_INSTANCE = st.secrets("DATABRICKS_HOST")
+    DATABRICKS_TOKEN = st.secrets("DATABRICKS_TOKEN")
 
     conn = sql.connect(
         server_hostname = DATABRICKS_INSTANCE,
