@@ -31,6 +31,39 @@ DB_HEADERS = {
     "Authorization": f"Bearer {DATABRICKS_TOKEN}"
 }
 
+# ---------------- Welcome Window ----------------
+if "show_dialog" not in st.session_state:
+    st.session_state.show_dialog = True
+
+# ---------------- Dialog ----------------
+if st.session_state.show_dialog:
+    # Create empty space to push content to center
+    top_space = st.empty()
+    
+    col1, col2, col3 = st.columns([1, 2, 1])
+
+    with col2:
+        with st.container(border=True):
+            st.markdown("## 👋 Welcome to GitHub Analyzer")
+            st.write("""
+            This app helps you:
+            - Analyze GitHub archive data  
+            - Run pipelines for a selected date  
+            - View processed insights  
+
+            **How to use:**
+            1. Select a date  
+            2. Wait for processing  
+            3. View results  
+            """)
+
+            if st.button("Got it 👍"):
+                st.session_state.show_dialog = False
+                st.rerun()
+
+    # Stop rest of app from rendering underneath
+    st.stop()
+
 
 # ---------------- UI ----------------
 st.title("🚀 GitHub Archive Analyzer")
