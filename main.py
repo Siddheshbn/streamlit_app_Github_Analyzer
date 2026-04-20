@@ -47,7 +47,7 @@ if st.session_state.show_dialog:
             st.markdown("## 👋 Welcome to GitHub Analyzer")
             st.write("""
             This app helps you:
-            - Analyze GitHub archive data  
+            - Analyze GitHub archive data (from https://www.gharchive.org/ )
             - Run pipelines for a selected date  
             - View processed insights  
 
