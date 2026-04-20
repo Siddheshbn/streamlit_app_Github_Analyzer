@@ -114,7 +114,7 @@ if st.button("Analyze"):
 
     
     if exists_in_gold:
-        st.success(f"Data exists in ADLS for {date} : {exists}. Skipping the Pipelines")
+        st.success(f"Data exists in ADLS for {date} : {exists_in_gold}. Skipping the Pipelines")
         loading_placeholder = st.empty()
         loading_placeholder.warning("Kindly Wait!!! Loading you data....")
     elif is_running:
