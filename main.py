@@ -63,8 +63,12 @@ if st.button("Analyze"):
     # ---------------- s Testing start ----------------
     # DONE : Before triggering the ADF pipeline, do check if the data for the selected date already exists in ADLS or not
     container_name = "githubanalyzer"
-    directory_path = f"bronze/{date}"
-    exists = utils.check_adls_data_exists(container_name, directory_path, AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET)
+    date_path = f"year={date.year}/month={date.month}/day={date.day}"
+    st.write(date_path) # DEBUGGING
+    directory_path_adls = f"bronze/{date}"
+    exists_in_adls = utils.check_adls_data_exists(container_name, directory_path_adls, AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET)
+    directory_path_gold = f"gold/overview_table/{date_path}"
+    exists_in_gold = utils.check_adls_data_exists(container_name, directory_path_gold, AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET)
     # st.success(f"Data exists in ADLS for {date} : {exists} |<br>| Skipping the Pipelines")
     # ---------------- s Testing end ----------------
 
