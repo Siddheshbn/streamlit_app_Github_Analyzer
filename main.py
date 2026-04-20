@@ -70,11 +70,21 @@ if st.button("Analyze"):
 
 
     formatted_date = str(date)  # YYYY-MM-DD
+    REFRESH_INTERVAL = 200
+    runs = utils.get_active_runs()
 
-    if exists:
+    is_running = utils.is_pipeline_running_for_date(runs, formatted_date)
+
+    
+    if exists_in_gold:
         st.success(f"Data exists in ADLS for {date} : {exists}. Skipping the Pipelines")
         loading_placeholder = st.empty()
         loading_placeholder.warning("Kindly Wait!!! Loading you data....")
+    elif is_running:
+        st.warning(f"Pipeline running for {formatted_date}... checking again in {REFRESH_INTERVAL}s")
+
+        time.sleep(REFRESH_INTERVAL)
+        st.rerun()
     else :
 
         # ---------------- s Testing start ----------------
