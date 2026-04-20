@@ -39,8 +39,10 @@ st.title("🚀 GitHub Archive Analyzer")
 date = st.date_input(
     "Select Date",
     value=datetime.date(2015, 1, 1),
-    min_value=datetime.date(2000, 1, 1),
-    max_value=datetime.date(2030, 12, 31)
+    # min_value=datetime.date(2000, 1, 1),
+    min_value=datetime.date(2011, 2, 12), # Date when the GH-Archive logs were first available
+    # max_value=datetime.date(2030, 12, 31)
+    max_value=datetime.date.today()
 )
 # hour = st.number_input("Hour", min_value=0, max_value=23, value=0)
 # duration = st.number_input("Duration (hrs)", min_value=1, max_value=24, value=1)
