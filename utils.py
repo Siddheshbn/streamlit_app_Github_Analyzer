@@ -322,6 +322,32 @@ def extract_data_from_adls_for_query(query):
     return df
 
 
+def get_active_runs():
+    DATABRICKS_INSTANCE = st.secrets["DATABRICKS_HOST"]
+    DATABRICKS_TOKEN = st.secrets["DATABRICKS_TOKEN"]
+    url = f"https://{DATABRICKS_INSTANCE}/api/2.1/jobs/runs/list"
+    
+    headers = {
+        "Authorization": f"Bearer {DATABRICKS_TOKEN}"
+    }
+    
+    params = {
+        "active_only": "true"
+    }
+
+    response = requests.get(url, headers=headers, params=params)
+    return response.json()
+
+def is_pipeline_running_for_date(runs_json, target_date):
+    for run in runs_json.get("runs", []):
+        params = run.get("overriding_parameters", {}).get("notebook_params", {})
+        
+        if params.get("date") == target_date:
+            return True
+    
+    return False
+
+
 
 
 
